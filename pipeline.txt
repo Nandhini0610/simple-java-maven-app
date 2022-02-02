@@ -1,0 +1,73 @@
+pipeline{
+    agent any
+     tools{
+        maven 'Maven 3.8.4'
+    }
+    stages{
+        stage (code_checkout){
+            steps{
+                  echo 'Pipeline First Project'
+                  checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Nandhini0610/simple-java-maven-app.git']]])
+            }
+            post{
+                success{
+                    echo 'code checkout successfull'
+                }
+                failure{
+                    echo 'code checkout Failed'
+                }
+            }
+        }
+        stage (build){
+            steps{
+                  
+                  sh 'mvn -DskipTests clean package'
+            }
+            post{
+                success{
+                    echo 'Build successfull'
+                }
+                failure{
+                    echo 'Build Failed'
+                }
+            }
+        }
+        stage (junit_test){
+            steps{
+                  
+                  sh 'mvn test'
+            }
+            post{
+                success{
+                    echo 'Build successfull'
+                    junit 'target/surefire-reports/TEST-com.mycompany.app.AppTest.xml	'
+                }
+                failure{
+                    echo 'Build Failed'
+                }
+            }
+        }
+        stage (execute_shell){
+            steps{
+                echo "Buildid : $BUILD_ID"
+                echo "jobname : $JOB_NAME"
+                echo "workspace : $WORKSPACE"
+                echo "Jenkinsname : $JENKINS_HOME"
+                echo "$Parameter"
+            }
+        }
+        
+        
+    }
+    post{
+            always{
+                    echo 'Post action'
+                }
+                success{
+                    echo 'Pipeline Project successfull'
+                }
+                failure{
+                    echo 'Pipeline Project Failed'
+                }
+    }
+}
