@@ -2,6 +2,7 @@ pipeline{
     agent any
      tools{
         maven 'Maven 3.8.4'
+        sonarqube 'Nandhu_sonarqube' 
     }
     stages{
         stage (code_checkout){
@@ -44,6 +45,22 @@ pipeline{
                 }
                 failure{
                     echo 'Build Failed'
+                }
+            }
+        }
+        stage(sonarqube){
+            steps{
+                sh '''sonar.host.url=http://54.237.251.190:9000/
+                sonar.login=d78b1bab4fe44e7bf44e6f996bccca710934bd3c
+                sonar.projectKey=Nandhu_sonarqube
+                sonar.java.binaries=target'''
+            }
+            post{
+                success{
+                    echo 'code Test successfull'
+                }
+                failure{
+                    echo 'code Test Failed'
                 }
             }
         }
