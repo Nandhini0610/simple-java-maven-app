@@ -50,10 +50,16 @@ pipeline{
         }
         stage(sonarqube){
             steps{
+                script { 
+                    //def scannerHome = tool name: 'mySonarScanner';
+                    withSonarQubeEnv("mySonarqubeServer") {
+                        sh "${tool("mySonarScanner")}/bin/sonar-scanner \
                 sh '''sonar.host.url=http://54.237.251.190:9000/
                 sonar.login=d78b1bab4fe44e7bf44e6f996bccca710934bd3c
                 sonar.projectKey=Nandhu_sonarqube
                 sonar.java.binaries=target'''
+                    }
+                }  
             }
             post{
                 success{
