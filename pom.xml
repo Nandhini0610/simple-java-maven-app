@@ -80,12 +80,12 @@
 
     <distributionManagement>
     <snapshotRepository>
-      <id>mymaven-snapshots</id>
-      <url>http://3.80.52.72:8081/repository/mymaven-snapshots/</url>
+      <id>mymaven-snapshot</id>
+      <url>http://3.80.52.72:8081/repository/mymaven-snapshot/</url>
     </snapshotRepository>
     <repository>
-      <id>mymaven-releases</id>
-      <url>http://3.80.52.72:8081/repository/mymaven-releases/</url>
+      <id>mymaven-release</id>
+      <url>http://3.80.52.72:8081/repository/mymaven-release/</url>
     </repository>
   </distributionManagement>
 </project>
