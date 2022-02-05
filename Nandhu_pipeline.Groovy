@@ -2,7 +2,7 @@ pipeline{
     agent any
      tools{
         maven 'Maven 3.8.4'
-        SonarQube servers 'Nandhu_sonarqube' 
+        SonarQube Scanner 'Nandhu_sonarqube' 
     }
     stages{
         stage (code_checkout){
