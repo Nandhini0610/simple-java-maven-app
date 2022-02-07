@@ -51,6 +51,7 @@ pipeline{
             steps{
                 
                    withSonarQubeEnv("Nandhu_sonarqube"){
+                   tool name: 'Nandhu_sonarqube', type: 'hudson.plugins.sonar.SonarRunnerInstallation'    
                    sh '''sonar.host.url=http://3.84.39.194:9000/
                    sonar.login=d78b1bab4fe44e7bf44e6f996bccca710934bd3c
                    sonar.projectKey=Nandhu_sonarqube
