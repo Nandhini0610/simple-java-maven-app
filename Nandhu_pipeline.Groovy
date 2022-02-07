@@ -91,4 +91,5 @@ pipeline{
                     echo 'Pipeline Project Failed'
                 }
     }
+  }
 }
