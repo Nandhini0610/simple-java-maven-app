@@ -49,7 +49,7 @@ pipeline{
        }
        stage(sonarqube){
             steps{
-                   withSonarQubeEnv(credentialsId: '9e985916-5272-4206-805b-246104b10579') 
+                   withSonarQubeEnv("Nandhu_sonarqube") 
                    tool name: 'Nandhu_sonarqube', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
                    sh '''sonar.host.url=http://3.84.39.194:9000/
                    sonar.login=d78b1bab4fe44e7bf44e6f996bccca710934bd3c
