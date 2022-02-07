@@ -55,6 +55,7 @@ pipeline{
                    sh '''sonar.host.url=http://18.209.168.88:9000/
                    sonar.login=d78b1bab4fe44e7bf44e6f996bccca710934bd3c
                    sonar.projectKey=Nandhu_sonarqube
+                   sonar.source=.
                    sonar.java.binaries=target'''}
                    }  
                    post{
