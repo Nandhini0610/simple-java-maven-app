@@ -49,9 +49,9 @@ pipeline{
        }
        stage(sonarqube){
             steps{
-                   withSonarQubeEnv("Nandhu_sonarqube"){
-                   sh '''tool name: \'Nandhu_sonarqube\', type: \'hudson.plugins.sonar.SonarRunnerInstallation\'
-                   sonar.host.url=http://44.201.255.119:9000
+                   def scannerHome = tool 'Nandhu_sonarqube'
+                   withSonarQubeEnv("Nandhu_sonarqube"){    
+                   sh '''sonar.host.url=http://44.201.255.119:9000
                    sonar.login=d78b1bab4fe44e7bf44e6f996bccca710934bd3c
                    sonar.projectKey=Nandhu_sonarqube
                    sonar.java.binaries=target'''}
