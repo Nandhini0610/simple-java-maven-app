@@ -74,18 +74,18 @@
  <repositories>
     <repository>
       <id>mymaven-group</id>
-      <url>http://54.82.117.140:8081/repository/mymaven-group/</url>
+      <url>http://18.234.53.72:8081/repository/mymaven-group/</url>
     </repository>
   </repositories>
 
     <distributionManagement>
     <snapshotRepository>
       <id>mymaven-snapshots</id>
-      <url>http://54.82.117.140:8081/repository/mymaven-snapshots/</url>
+      <url>http://18.234.53.72:8081/repository/mymaven-snapshots/</url>
     </snapshotRepository>
     <repository>
       <id>mymaven-releases</id>
-      <url>http://54.82.117.140:8081/repository/mymaven-releases/</url>
+      <url>http://18.234.53.72:8081/repository/mymaven-releases/</url>
     </repository>
   </distributionManagement>
 </project>
