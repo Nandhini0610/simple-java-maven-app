@@ -2,6 +2,7 @@ pipeline{
     agent any
      tools{
         maven 'Maven 3.8.4'
+        SonarQube Scanner 'Nandhu_sonarqube' 
      }
      stages{
         stage (code_checkout){
@@ -48,8 +49,7 @@ pipeline{
             }
        }
        stage(sonarqube){
-            steps{
-                   def scannerHome = tool name: 'Nandhu_sonarqube';
+           steps{
                    withSonarQubeEnv("Nandhu_sonarqube"){    
                    sh '''sonar.host.url=http://44.201.255.119:9000
                    sonar.login=d78b1bab4fe44e7bf44e6f996bccca710934bd3c
