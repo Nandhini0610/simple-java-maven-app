@@ -49,8 +49,8 @@ pipeline{
        }
       stage(sonarqube){
            steps{
-                   withSonarQubeEnv("Sonarqube"){    
-                   sh '''${tool("Sonarqube")}/bin/sonar-scanner    
+                   withSonarQubeEnv("Sonarqube") {
+                   '''sh "${tool("Sonarqube")}/bin/sonar-scanner     
                    sonar.host.url=http://52.205.166.108:9000/
                    sonar.login=b395ceccf7f2b9e33c6e5d9ab769a79ddd80e5cf
                    sonar.projectKey=Sonarqube
