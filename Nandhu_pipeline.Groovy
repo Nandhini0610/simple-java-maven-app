@@ -47,7 +47,7 @@ pipeline{
                 }
             }
        }
-      /* stage(sonarqube){
+      stage(sonarqube){
            steps{
                    withSonarQubeEnv("Nandhu_sonarqube"){    
                    sh '''${tool("Nandhu_sonarqube")}/bin/sonar-scanner    
@@ -64,7 +64,7 @@ pipeline{
                     echo 'code Test Failed'
                 }
             }
-        }*/
+        }
              stage (execute_shell){
             steps{
                 echo "Buildid : $BUILD_ID"
