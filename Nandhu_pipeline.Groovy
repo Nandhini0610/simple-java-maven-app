@@ -63,7 +63,7 @@ pipeline{
         }
          stage ("Upload to Nexus") {
             steps {
-                sh "mvn -gs ${WORKSPACE}/settings.xml deploy"
+                sh " mvn -gs /var/jenkins_home/workspace/Pipeline project/Settings.xml deploy"
                }
             }
              stage (execute_shell){
