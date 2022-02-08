@@ -61,6 +61,11 @@ pipeline{
                }
             }
         }
+         stage ("Upload to Nexus") {
+            steps {
+                sh "mvn -gs ${WORKSPACE}/settings.xml deploy"
+               }
+            }
              stage (execute_shell){
             steps{
                 echo "Buildid : $BUILD_ID"
