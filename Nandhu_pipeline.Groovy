@@ -49,11 +49,11 @@ pipeline{
        }
       stage(sonarqube){
            steps{
-                   withSonarQubeEnv("Nandhu_sonarqube"){    
-                   sh '''${tool("Nandhu_sonarqube")}/bin/sonar-scanner    
-                   sonar.host.url=http://44.201.255.119:9000
-                   sonar.login=d78b1bab4fe44e7bf44e6f996bccca710934bd3c
-                   sonar.projectKey=Nandhu_sonarqube
+                   withSonarQubeEnv("Sonarqube"){    
+                   sh '''${tool("Sonarqube")}/bin/sonar-scanner    
+                   sonar.host.url=http://52.205.166.108:9000/
+                   sonar.login=b395ceccf7f2b9e33c6e5d9ab769a79ddd80e5cf
+                   sonar.projectKey=Sonarqube
                    sonar.java.binaries=target'''}
                    }  
                    post{
