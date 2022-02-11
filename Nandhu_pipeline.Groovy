@@ -63,7 +63,7 @@ pipeline{
         }
         stage ("Upload to Nexus") {
             steps {
-                sh "mvn -gs ${WORKSPACE}/settings.xml deploy"
+                sh "mvn -gs var/jenkins_data/jenkins_home/workspace/Freestyle_Project/settings.xml deploy"
                }
             }
         stage (execute_shell){
