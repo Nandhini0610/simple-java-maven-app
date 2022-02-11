@@ -1,14 +1,14 @@
 pipeline{ 
     agent any 
     tools {
-        maven 'Maven3.8'
+        maven 'Maven 3.8.4'
         
       }
     stages{
         stage("Checkout"){
             steps{
                 echo "========Checking out code========"
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'MyGithubaccount', url: 'https://github.com/vcroshan/simple-java-maven-app.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'MyGithubaccount', url: 'https://github.com/Nandhini0610/simple-java-maven-app.git']]])
                 
             }
             post{
@@ -46,21 +46,21 @@ pipeline{
             }
            
             }
-        /*stage ("sonar scanning") {
+        stage ("sonar scanning") {
             steps {
                 script { 
                     def scannerHome = tool name: 'mySonarScanner';
                     withSonarQubeEnv("mySonarqubeServer") {
-                        sh "${tool("mySonarScanner")}/bin/sonar-scanner \
-                        -Dsonar.projectKey=SimpleMaven \
+                        sh "${tool("Sonarqube")}/bin/sonar-scanner \
+                        -Dsonar.projectKey=Sonarqube \
                         -Dsonar.sources=. \
                         -Dsonar.java.binaries=target \
-                        -Dsonar.host.url=http://44.197.132.246:9000/ \
-                        -Dsonar.login=12e2853ff7e7d0dd75ce2666eca6699aa3dc6d0a"
+                        -Dsonar.host.url=http://35.173.133.14:9000/ \
+                        -Dsonar.login=b395ceccf7f2b9e33c6e5d9ab769a79ddd80e5cf"
                     }
                }
             }
-        }*/
+        }
         stage ("Upload to Nexus") {
             steps {
                 sh "mvn -gs ${WORKSPACE}/settings.xml deploy"
