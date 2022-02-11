@@ -55,7 +55,7 @@ pipeline{
                         sh "${tool("Sonarqube")}/bin/sonar-scanner \
                         -Dsonar.projectKey=Sonarqube \
                         -Dsonar.java.binaries=target \
-                        -Dsonar.host.url=http://35.173.133.14:9000/ \
+                        -Dsonar.host.url=http://54.152.116.172:9000/ \
                         -Dsonar.login=b395ceccf7f2b9e33c6e5d9ab769a79ddd80e5cf"
                     }
                }
@@ -63,7 +63,7 @@ pipeline{
         }
         stage ("Upload to Nexus") {
             steps {
-                sh "mvn -gs var/jenkins_data/jenkins_home/workspace/Freestyle_Project/settings.xml deploy"
+                sh "mvn -gs ${WORKDIR}/settings.xml deploy"
                }
             }
         stage (execute_shell){
