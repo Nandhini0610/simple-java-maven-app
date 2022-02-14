@@ -1,0 +1,58 @@
+freeStyleJob('Simple-java-maven-app')
+{
+    parameters {
+        stringParam('myParameterName', defaultvalue = 'Nandhini',description = '')
+    }
+     description('This is my first job dsl project')
+     scm {
+         git{
+             branch('master')
+             remote{
+                 credentials('54a8c35c-2a44-43e3-b481-1ff7595f8081')
+                 github('Nandhini0610/simple-java-maven-app', protocol ='https', host ='github.com')
+             }
+         }
+    }
+    steps {
+        shell('echo $BUILD_ID; echo $JOB_NAME; echo $WORKSPACE; echo $JENKINS_HOME')
+        maven {
+         mavenInstallation('Maven 3.8.4')
+         goals('clean package')
+         properties(skipTests: true)
+    }
+    maven {
+         mavenInstallation('Maven 3.8.4')
+         goals('test')
+    }
+     maven {
+         mavenInstallation('Maven 3.8.4')
+         goals('-gs settings.xml deploy')
+    }
+    } 
+    publishers {
+        archiveArtifacts('target/*.jar')
+        archiveJunit('target/surefire-reports/*.xml')
+    }
+}
+
+pipelineJob('simple-maven-java-pipeline') {
+    parameters {
+        stringParam('myParameterName', defaultvalue = 'Nandhini',description = '')
+    }
+       definition {
+           cpsScm {
+            scm {
+                git{
+                    branch('master')
+             remote{
+                 credentials('54a8c35c-2a44-43e3-b481-1ff7595f8081')
+                 github('Nandhini0610/simple-java-maven-app', protocol ='https', host ='github.com')
+             }
+
+                }
+            }
+            lightweight(lightweight = true)
+            scriptPath('Nandhu_pipeline.Groovy')
+        }
+       }
+}
