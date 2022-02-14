@@ -1,7 +1,7 @@
 pipeline{
-    agent{
+    /*agent{
         label "Mybuildserver"
-    }
+    }*/
      tools{
         maven 'Maven 3.8.4' 
      }
