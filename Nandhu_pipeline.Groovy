@@ -72,7 +72,7 @@ pipeline{
                 echo "jobname : $JOB_NAME"
                 echo "workspace : $WORKSPACE"
                 echo "Jenkinsname : $JENKINS_HOME"
-                echo "$Parameter"
+                echo "$myParameterName"
             }
         } 
      }
